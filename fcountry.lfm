@@ -1,0 +1,248 @@
+object frmCountry: TfrmCountry
+  Left = 737
+  Height = 240
+  Top = 459
+  Width = 961
+  Caption = 'Country'
+  ClientHeight = 240
+  ClientWidth = 961
+  OnCreate = FormCreate
+  LCLVersion = '2.2.4.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 240
+    Top = 0
+    Width = 961
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    OnChange = PageControl1Change
+    Options = [nboShowCloseButtons]
+    object TabSheet1: TTabSheet
+      Caption = 'Table'
+      ClientHeight = 212
+      ClientWidth = 953
+      object dbTable: TRxDBGrid
+        Left = 0
+        Height = 148
+        Top = 64
+        Width = 953
+        ColumnDefValues.BlobText = '(blob)'
+        TitleButtons = False
+        AutoSort = True
+        Columns = <        
+          item
+            Title.Alignment = taCenter
+            Title.Orientation = toHorizontal
+            Title.Caption = 'COUNTRY'
+            FieldName = 'COUNTRY'
+            EditButtons = <>
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.NotEmptyValue = '(Não está vazio)'
+            Filter.AllValue = '(Todos os valores)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            Footers = <>
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Orientation = toHorizontal
+            Title.Caption = 'CURRENCY'
+            FieldName = 'CURRENCY'
+            EditButtons = <>
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.NotEmptyValue = '(Não está vazio)'
+            Filter.AllValue = '(Todos os valores)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            Footers = <>
+          end>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        FooterOptions.DrawFullLine = False
+        SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+        SearchOptions.FromStart = False
+        OptionsRx = [rdgAllowQuickFilter]
+        Align = alClient
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        DataSource = dsCountry
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        TabOrder = 0
+        OnColExit = ComponentExit
+      end
+      object Panel1: TPanel
+        Left = 0
+        Height = 64
+        Top = 0
+        Width = 953
+        Align = alTop
+        ClientHeight = 64
+        ClientWidth = 953
+        Color = clBtnFace
+        ParentColor = False
+        TabOrder = 1
+        object cbParam: TComboBox
+          Left = 8
+          Height = 23
+          Top = 29
+          Width = 200
+          ItemHeight = 15
+          ItemIndex = 0
+          Items.Strings = (
+            'COUNTRY'
+            'CURRENCY'
+          )
+          OnExit = ComponentExit
+          TabOrder = 0
+          Text = 'COUNTRY'
+        end
+        object edValue: TEdit
+          Left = 217
+          Height = 23
+          Top = 29
+          Width = 200
+          OnExit = ComponentExit
+          TabOrder = 1
+        end
+        object btnSearch: TBitBtn
+          Left = 426
+          Height = 30
+          Top = 29
+          Width = 75
+          Caption = 'Search'
+          OnClick = btnSearchClick
+          TabOrder = 2
+        end
+        object Label1: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 38
+          Caption = 'Sea&rch:'
+          FocusControl = cbParam
+          ParentColor = False
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Record'
+      ClientHeight = 212
+      ClientWidth = 953
+      object Panel2: TPanel
+        Left = 0
+        Height = 212
+        Top = 0
+        Width = 953
+        Align = alClient
+        ClientHeight = 212
+        ClientWidth = 953
+        Color = clBtnFace
+        ParentColor = False
+        TabOrder = 0
+        object Label2: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 57
+          Caption = 'COUNTRY:'
+          ParentColor = False
+        end
+        object Label3: TLabel
+          Left = 217
+          Height = 15
+          Top = 8
+          Width = 63
+          Caption = 'CURRENCY:'
+          ParentColor = False
+        end
+        object DBEdit1: TDBEdit
+          Left = 8
+          Height = 23
+          Top = 26
+          Width = 200
+          DataField = 'COUNTRY'
+          DataSource = dsCountry
+          MaxLength = 0
+          TabOrder = 0
+          OnExit = ComponentExit
+        end
+        object DBEdit2: TDBEdit
+          Left = 217
+          Height = 23
+          Top = 26
+          Width = 200
+          DataField = 'CURRENCY'
+          DataSource = dsCountry
+          MaxLength = 0
+          TabOrder = 1
+          OnExit = ComponentExit
+        end
+      end
+    end
+  end
+  object dsCountry: TDataSource
+    DataSet = dmRecords.qryCountry
+    Left = 48
+    Top = 112
+  end
+end

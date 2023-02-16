@@ -1,0 +1,105 @@
+object dmRecords: TdmRecords
+  OldCreateOrder = False
+  Height = 350
+  HorizontalOffset = 827
+  VerticalOffset = 345
+  Width = 590
+  object qryProject: TZQuery
+    Connection = dmMain.ZConnection1
+    SQL.Strings = (
+      'SELECT 0 as ACAO3, r.PROJ_ID, r.PROJ_NAME, r.PROJ_DESC, r.TEAM_LEADER, r.PRODUCT'
+      'FROM PROJECT r'
+    )
+    Params = <>
+    Options = [doCalcDefaults, doPreferPrepared]
+    Left = 77
+    Top = 32
+    object qryProjectPROJ_ID: TStringField
+      FieldKind = fkData
+      FieldName = 'PROJ_ID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 5
+    end
+    object qryProjectPROJ_NAME: TStringField
+      FieldKind = fkData
+      FieldName = 'PROJ_NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryProjectPROJ_DESC: TMemoField
+      FieldKind = fkData
+      FieldName = 'PROJ_DESC'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object qryProjectTEAM_LEADER: TSmallintField
+      FieldKind = fkData
+      FieldName = 'TEAM_LEADER'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryProjectPRODUCT: TStringField
+      FieldKind = fkData
+      FieldName = 'PRODUCT'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 12
+    end
+    object qryProjectACAO3: TLongintField
+      FieldKind = fkData
+      FieldName = 'ACAO3'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object qryCustumer: TZQuery
+    Connection = dmMain.ZConnection1
+    SQL.Strings = (
+      'SELECT r.CUST_NO, r.CUSTOMER, r.CONTACT_FIRST, r.CONTACT_LAST, r.PHONE_NO,'
+      '    r.ADDRESS_LINE1, r.ADDRESS_LINE2, r.CITY, r.STATE_PROVINCE, r.COUNTRY,'
+      '    r.POSTAL_CODE, r.ON_HOLD'
+      'FROM CUSTOMER r'
+    )
+    Params = <>
+    Left = 176
+    Top = 32
+  end
+  object qryCountry: TZQuery
+    Connection = dmMain.ZConnection1
+    CachedUpdates = True
+    AfterPost = qryCountryAfterPost
+    SQL.Strings = (
+      'SELECT r.COUNTRY, r.CURRENCY'
+      'FROM COUNTRY r'
+    )
+    Params = <>
+    Left = 77
+    Top = 216
+  end
+  object updCountry: TZUpdateSQL
+    UseSequenceFieldForRefreshSQL = False
+    Left = 182
+    Top = 224
+  end
+end

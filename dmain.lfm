@@ -1,0 +1,24 @@
+object dmMain: TdmMain
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 1235
+  VerticalOffset = 294
+  Width = 150
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
+    Properties.Strings = (
+      'AutoEncodeStrings=True'
+      'controls_cp=CP_UTF8'
+    )
+    HostName = 'LocalHost'
+    Port = 0
+    Database = 'C:\Lazarus-Project\Tabbed Document Interface Demo\database\employee.fdb'
+    User = 'SYSDBA'
+    Password = 'masterkey'
+    Protocol = 'firebird-3.0'
+    Left = 40
+    Top = 24
+  end
+end

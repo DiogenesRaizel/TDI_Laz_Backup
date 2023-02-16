@@ -1,0 +1,413 @@
+object frmCustomer: TfrmCustomer
+  Left = 647
+  Height = 403
+  Top = 316
+  Width = 704
+  Caption = 'Customer'
+  ClientHeight = 403
+  ClientWidth = 704
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  LCLVersion = '2.2.4.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 403
+    Top = 0
+    Width = 704
+    ActivePage = tsTable
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object tsTable: TTabSheet
+      Caption = 'tsTable'
+      ClientHeight = 375
+      ClientWidth = 696
+      object dbTable: TRxDBGrid
+        Left = 0
+        Height = 301
+        Top = 74
+        Width = 696
+        ColumnDefValues.BlobText = '(blob)'
+        TitleButtons = False
+        AutoSort = True
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        FooterOptions.DrawFullLine = False
+        SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+        SearchOptions.FromStart = False
+        OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+        Align = alClient
+        AlternateColor = clMoneyGreen
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        DataSource = DataSource1
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
+        TabOrder = 1
+        OnExit = ComponentExit
+      end
+      object GroupBox1: TGroupBox
+        Left = 0
+        Height = 74
+        Top = 0
+        Width = 696
+        Align = alTop
+        Caption = 'Search'
+        ClientHeight = 54
+        ClientWidth = 692
+        Color = clBtnFace
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 43
+          Caption = 'Column'
+          ParentColor = False
+        end
+        object Label2: TLabel
+          Left = 216
+          Height = 15
+          Top = 8
+          Width = 28
+          Caption = 'Value'
+          ParentColor = False
+        end
+        object edValue: TEdit
+          Left = 216
+          Height = 23
+          Top = 25
+          Width = 200
+          OnExit = ComponentExit
+          TabOrder = 1
+        end
+        object cbColumn: TComboBox
+          Left = 8
+          Height = 23
+          Top = 25
+          Width = 200
+          ItemHeight = 15
+          ItemIndex = 0
+          Items.Strings = (
+            'CUST_NO'
+            'CUSTOMER'
+            'CONTACT_FIRST'
+            'CONTACT_LAST'
+            'CITY'
+            'COUNTRY'
+          )
+          OnExit = ComponentExit
+          TabOrder = 0
+          Text = 'CUST_NO'
+        end
+        object btSearch: TBitBtn
+          Left = 423
+          Height = 30
+          Top = 18
+          Width = 75
+          Caption = 'Search'
+          OnClick = btSearchClick
+          TabOrder = 2
+        end
+      end
+    end
+    object tsRegister: TTabSheet
+      Caption = 'tsRegister'
+      ClientHeight = 375
+      ClientWidth = 696
+      object Panel1: TPanel
+        Left = 0
+        Height = 375
+        Top = 0
+        Width = 696
+        Align = alClient
+        ClientHeight = 375
+        ClientWidth = 696
+        Color = clBtnFace
+        ParentColor = False
+        TabOrder = 0
+        object DBEdit1: TDBEdit
+          Left = 24
+          Height = 23
+          Top = 27
+          Width = 80
+          DataField = 'CUST_NO'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 0
+          OnKeyDown = DBEdit1KeyDown
+        end
+        object DBEdit2: TDBEdit
+          Left = 232
+          Height = 23
+          Top = 27
+          Width = 200
+          DataField = 'CUSTOMER'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object DBEdit3: TDBEdit
+          Left = 24
+          Height = 23
+          Top = 80
+          Width = 200
+          DataField = 'CONTACT_FIRST'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 2
+        end
+        object DBEdit4: TDBEdit
+          Left = 232
+          Height = 23
+          Top = 80
+          Width = 200
+          DataField = 'CONTACT_LAST'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 3
+        end
+        object DBEdit5: TDBEdit
+          Left = 440
+          Height = 23
+          Top = 80
+          Width = 100
+          DataField = 'PHONE_NO'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 4
+        end
+        object DBEdit6: TDBEdit
+          Left = 24
+          Height = 23
+          Top = 128
+          Width = 400
+          DataField = 'ADDRESS_LINE1'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 5
+        end
+        object DBEdit7: TDBEdit
+          Left = 24
+          Height = 23
+          Top = 176
+          Width = 400
+          DataField = 'ADDRESS_LINE2'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 6
+        end
+        object DBEdit8: TDBEdit
+          Left = 24
+          Height = 23
+          Top = 223
+          Width = 200
+          DataField = 'CITY'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 7
+        end
+        object DBEdit9: TDBEdit
+          Left = 232
+          Height = 23
+          Top = 224
+          Width = 200
+          DataField = 'STATE_PROVINCE'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 8
+        end
+        object DBEdit10: TDBEdit
+          Left = 441
+          Height = 23
+          Top = 224
+          Width = 80
+          DataField = 'COUNTRY'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 9
+        end
+        object DBEdit11: TDBEdit
+          Left = 232
+          Height = 23
+          Top = 273
+          Width = 80
+          DataField = 'ON_HOLD'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 10
+        end
+        object DBEdit12: TDBEdit
+          Left = 24
+          Height = 23
+          Top = 273
+          Width = 80
+          DataField = 'POSTAL_CODE'
+          DataSource = DataSource1
+          MaxLength = 0
+          TabOrder = 11
+        end
+        object Label3: TLabel
+          Left = 24
+          Height = 15
+          Top = 8
+          Width = 51
+          Caption = 'CUST_NO'
+          ParentColor = False
+        end
+        object Label4: TLabel
+          Left = 232
+          Height = 15
+          Top = 8
+          Width = 60
+          Caption = 'CUSTOMER'
+          ParentColor = False
+        end
+        object Label5: TLabel
+          Left = 24
+          Height = 15
+          Top = 60
+          Width = 86
+          Caption = 'CONTACT_FIRST'
+          ParentColor = False
+        end
+        object Label6: TLabel
+          Left = 232
+          Height = 15
+          Top = 58
+          Width = 84
+          Caption = 'CONTACT_LAST'
+          ParentColor = False
+        end
+        object Label7: TLabel
+          Left = 441
+          Height = 15
+          Top = 58
+          Width = 63
+          Caption = 'PHONE_NO'
+          ParentColor = False
+        end
+        object Label8: TLabel
+          Left = 24
+          Height = 15
+          Top = 109
+          Width = 84
+          Caption = 'ADDRESS_LINE1'
+          ParentColor = False
+        end
+        object Label9: TLabel
+          Left = 25
+          Height = 15
+          Top = 154
+          Width = 84
+          Caption = 'ADDRESS_LINE2'
+          ParentColor = False
+        end
+        object Label10: TLabel
+          Left = 24
+          Height = 15
+          Top = 205
+          Width = 24
+          Caption = 'CITY'
+          ParentColor = False
+        end
+        object Label11: TLabel
+          Left = 232
+          Height = 15
+          Top = 203
+          Width = 91
+          Caption = 'STATE_PROVINCE'
+          ParentColor = False
+        end
+        object Label12: TLabel
+          Left = 441
+          Height = 15
+          Top = 197
+          Width = 54
+          Caption = 'COUNTRY'
+          ParentColor = False
+        end
+        object Label13: TLabel
+          Left = 24
+          Height = 15
+          Top = 253
+          Width = 77
+          Caption = 'POSTAL_CODE'
+          ParentColor = False
+        end
+        object Label14: TLabel
+          Left = 232
+          Height = 15
+          Top = 254
+          Width = 55
+          Caption = 'ON_HOLD'
+          ParentColor = False
+        end
+      end
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = dmCustomer.qryCustomer
+    OnStateChange = DataSource1StateChange
+    Left = 144
+    Top = 56
+  end
+end

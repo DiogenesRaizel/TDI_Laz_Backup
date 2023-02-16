@@ -1,0 +1,240 @@
+object dmCustomer: TdmCustomer
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 292
+  HorizontalOffset = 935
+  VerticalOffset = 293
+  Width = 426
+  object qryCustomer: TZQuery
+    Connection = dmMain.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'SELECT a.CUST_NO, a.CUSTOMER, a.CONTACT_FIRST, a.CONTACT_LAST, a.PHONE_NO,'
+      '    a.ADDRESS_LINE1, a.ADDRESS_LINE2, a.CITY, a.STATE_PROVINCE, a.COUNTRY,'
+      '    a.POSTAL_CODE, a.ON_HOLD'
+      'FROM CUSTOMER a '
+      'WHERE a.CUST_NO IS NULL;'
+    )
+    Params = <>
+    Left = 64
+    Top = 18
+    object qryCustomerCUST_NO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CUST_NO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryCustomerCUSTOMER: TStringField
+      FieldKind = fkData
+      FieldName = 'CUSTOMER'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 25
+    end
+    object qryCustomerCONTACT_FIRST: TStringField
+      FieldKind = fkData
+      FieldName = 'CONTACT_FIRST'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qryCustomerCONTACT_LAST: TStringField
+      FieldKind = fkData
+      FieldName = 'CONTACT_LAST'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCustomerPHONE_NO: TStringField
+      FieldKind = fkData
+      FieldName = 'PHONE_NO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCustomerADDRESS_LINE1: TStringField
+      FieldKind = fkData
+      FieldName = 'ADDRESS_LINE1'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qryCustomerADDRESS_LINE2: TStringField
+      FieldKind = fkData
+      FieldName = 'ADDRESS_LINE2'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qryCustomerCITY: TStringField
+      FieldKind = fkData
+      FieldName = 'CITY'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 25
+    end
+    object qryCustomerSTATE_PROVINCE: TStringField
+      FieldKind = fkData
+      FieldName = 'STATE_PROVINCE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qryCustomerCOUNTRY: TStringField
+      FieldKind = fkData
+      FieldName = 'COUNTRY'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qryCustomerPOSTAL_CODE: TStringField
+      FieldKind = fkData
+      FieldName = 'POSTAL_CODE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 12
+    end
+    object qryCustomerON_HOLD: TStringField
+      FieldKind = fkData
+      FieldName = 'ON_HOLD'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+  end
+  object ZUpdateSQL1: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM CUSTOMER'
+      'WHERE'
+      '  CUSTOMER.CUST_NO = :OLD_CUST_NO'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CUSTOMER'
+      '  (CUST_NO, CUSTOMER, CONTACT_FIRST, CONTACT_LAST, PHONE_NO, ADDRESS_LINE1, '
+      '   ADDRESS_LINE2, CITY, STATE_PROVINCE, COUNTRY, POSTAL_CODE, ON_HOLD)'
+      'VALUES'
+      '  (:CUST_NO, :CUSTOMER, :CONTACT_FIRST, :CONTACT_LAST, :PHONE_NO, :ADDRESS_LINE1, '
+      '   :ADDRESS_LINE2, :CITY, :STATE_PROVINCE, :COUNTRY, :POSTAL_CODE, :ON_HOLD)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CUSTOMER SET'
+      '  CUST_NO = :CUST_NO,'
+      '  CUSTOMER = :CUSTOMER,'
+      '  CONTACT_FIRST = :CONTACT_FIRST,'
+      '  CONTACT_LAST = :CONTACT_LAST,'
+      '  PHONE_NO = :PHONE_NO,'
+      '  ADDRESS_LINE1 = :ADDRESS_LINE1,'
+      '  ADDRESS_LINE2 = :ADDRESS_LINE2,'
+      '  CITY = :CITY,'
+      '  STATE_PROVINCE = :STATE_PROVINCE,'
+      '  COUNTRY = :COUNTRY,'
+      '  POSTAL_CODE = :POSTAL_CODE,'
+      '  ON_HOLD = :ON_HOLD'
+      'WHERE'
+      '  CUSTOMER.CUST_NO = :OLD_CUST_NO'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 168
+    Top = 32
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CUST_NO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CUSTOMER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CONTACT_FIRST'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CONTACT_LAST'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PHONE_NO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ADDRESS_LINE1'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ADDRESS_LINE2'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CITY'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'STATE_PROVINCE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'COUNTRY'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'POSTAL_CODE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ON_HOLD'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_CUST_NO'
+        ParamType = ptUnknown
+      end>
+  end
+end
